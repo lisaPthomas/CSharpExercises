@@ -15,21 +15,102 @@ namespace CSharpExercises
             return "Hello World!";
         }
 
-        public static string ReverseStringHard(string quote)
-        {
-            throw new NotImplementedException();
-        }
+        //public static string ReverseStringHard(string quote)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         /* Alright - your turn now! */
 
-        // 1. Create a method called SayHello that accepts a string representing a name and returns a welcome message (E.g. "Hello John!")
+        // 1. Create a method that accepts a name and returns a welcome message (E.g. "Hello John!")
+        public static string SayHello()
+        {
+            Console.WriteLine("What is your name? Please enter: ");
+            string entry = Console.ReadLine();
+            string name = "Hello " + entry + "!";
+
+            return name;
+        }
+
         // 2. Create a method called Sum that accepts two integers and returns their sum.
-        // 3. Create a method called Divide that accepts two decimals and returns the result of dividing the two numbers as a decimal.
-        // 4. Create a method called CanOpenCheckingAccount that accepts an integer representing a customers age, returning true if the age is greater than or equal to 18, or false if the argument is less than 18.
-        // 5. Create a method called GetFirstName that accepts a string representing a full name (e.g. "John Smith"), and returns only the first name.
-        // 6. Create a method called ReverseStringHard that accepts a string and returns the string in reverse. (No built in functions allowed)
-        // 7. Create a method called ReverseStringEasy that accepts a string and returns the string in reverse. (Using only built in functions)
-        // 8. Create a method called PrintTimesTable that accepts an integer and returns the times table as a string for that number up to the 10th multiplication.
+        public static int Sum(int num1, int num2)
+        {
+            return (num1 + num2);
+        }
+        /* 3. Create a method called Divide that accepts two decimals and 
+        returns the result of dividing the two numbers as a decimal. */
+        public static double Divide(double num1, double num2)
+        {
+            return (num1 / num2);
+        }
+
+        /* 4. Create a method called CanOpenCheckingAccount that accepts an 
+        integer representing a customers age, returning true if the age is 
+        greater than or equal to 18, or false if the argument is less than 18. */
+        public static string CanOpenCheckingAccount(int custAge)
+        {
+            Console.WriteLine("What is your age? Please enter: ");
+
+            custAge = Convert.ToInt32(Console.ReadLine());
+
+            if (custAge >= 18)
+            {
+                Console.WriteLine("Congratulations! You can open a checking account!");
+                return "true";
+            }
+            else
+            {
+                Console.WriteLine("Come back when you are 18");
+                return "false";
+            }
+        }
+
+        /* 5. Create a method called GetFirstName that accepts a string representing a full name (e.g. "John Smith"), 
+        and returns only the first name. */
+        public static string GetFirstName()
+        {
+            Console.WriteLine("What is your first and last name?");
+
+            string fullName = Console.ReadLine();
+            var names = fullName.Split(' ');
+            string firstName = names[0];
+            Console.WriteLine("Your first name is " + firstName);
+
+            return firstName;
+
+        }
+
+        /* 6. Create a method called ReverseStringHard that accepts a string and returns the string in reverse. (No built in functions allowed) */
+        public static string ReverseStringHard()
+        {
+            Console.Write("Enter a string: ");
+
+            string name = Console.ReadLine();
+            string reverseName = "";
+            for(int i = name.Length - 1; i >= 0; i--)
+            {
+                reverseName += name[i];
+            }
+
+            return reverseName;
+        }
+
+
+        /* 7. Create a method called ReverseStringEasy that accepts a string and returns the string in reverse.
+        (Using only built in functions) */
+        public static string ReverseStringEasy()
+        {
+            Console.Write("Enter a string: ");
+            string name = Console.ReadLine();
+            char[] reverseArray = name.ToCharArray();
+            Array.Reverse(reverseArray);
+
+            return new string(reverseArray);
+        }
+
+    /* 8. Create a method called PrintTimesTable that accepts an integer (n)
+    and returns the times table as a string for that number up to the nth multiplication.*/
+        
         /* e.g. 10 should return
          * 10 * 1 = 10
          * 10 * 2 = 20
@@ -41,9 +122,33 @@ namespace CSharpExercises
          * 10 * 8 = 80
          * 10 * 9 = 90
          * 10 * 10 = 10 */
+        public static string PrintTimesTable()
+         {
+            Console.WriteLine("Enter a number less than 11");
+            int n = Convert.ToInt32(Console.ReadLine());
+            int n2 = n;
 
-        // 9. Create a method called ConvertKelvinToFahrenheit that accepts a double representing a temperature in kelvin and returns a double containing the temperature in Fahrenheit.
-        // 10. Create a method called GetAverageHard that accepts an array of integers and returns the average value as a double. (No built in functions allowed)
+            for(int i = n; i <= n && i>=0; i--)
+            {
+                int product = n2 * i;
+                Console.WriteLine(n2 + "*" + i + "=" + product);
+            };
+
+            return PrintTimesTable().ToString();
+         }
+
+        /* 9. Create a method called ConvertKelvinToFahrenheit that accepts a double representing 
+        a temperature in kelvin and returns a double containing the temperature in Fahrenheit. */
+        public static double ConvertKelvinToFarenheit()
+        {
+            double kelvin = Convert.ToDouble(Console.ReadLine());
+            double fahrenheit = (9 / 5) * (kelvin - 273) + 32;
+
+            return fahrenheit;
+        }
+
+        // 10. Create a method called GetAverageHard that accepts 
+        //an array of integers and returns the average value as a double. (No built in functions allowed)
         // 11. Create a method called GetAverageEasy that accepts an array of integers and returns the average value as a double. (Using only built in functions)
         // 12. Create a method called DrawTriangle that accepts two integers - number and width and returns a string containing a drawn triangle using the number parameter.
         /* e.g. Number: 8, Width: 8 should return
@@ -57,8 +162,6 @@ namespace CSharpExercises
          * 8 */
 
         // 13. Create a method called GetMilesPerHour that accepts a double representing distance and three integers representing hours, minutes and seconds. The method should return the speed in MPH rounded to the nearest whole number as a string. (e.g. "55MPH")
-
-
         // 14. Create a method called IsVowel that accepts a char parameter and returns true if the parameter is a vowel or false if the parameter is a consonant.
         // 15. Create a method called IsConsonant that accepts a char parameter and returns true if the parameter is a consonant or false if the parameter is a vowel.
         // 16. The Collatz conjecture, named after Lothar Collatz of Germany, proposed the following conjecture in 1937. 
